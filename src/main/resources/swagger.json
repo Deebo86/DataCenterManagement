@@ -1,0 +1,982 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "ServerOperations",
+      "description": "All operations related to servers"
+    },
+    {
+      "name": "DataCenterOperations",
+      "description": "All operations related to datacenters"
+    }
+  ],
+  "paths": {
+    "/api/servers/{serverId}": {
+      "get": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "summary": "Get server by id",
+        "operationId": "getServer",
+        "parameters": [
+          {
+            "name": "serverId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid id supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Found the server",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Server not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "summary": "Update a specific server",
+        "operationId": "updateServer",
+        "parameters": [
+          {
+            "name": "serverId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerUpdateRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid id supplied or Invalid fields supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Server updated",
+            "content": {
+              "application/json": {
+
+              }
+            }
+          },
+          "404": {
+            "description": "Server not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error - Update Failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "summary": "Delete a specific server",
+        "operationId": "deleteServer",
+        "parameters": [
+          {
+            "name": "serverId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid id supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Deleted the server",
+            "content": {
+              "application/json": {
+
+              }
+            }
+          },
+          "404": {
+            "description": "Server not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error - Deletion Failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/datacenters/{dataCenterId}": {
+      "get": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Get details of a specific datacenter",
+        "operationId": "getDataCenterById",
+        "parameters": [
+          {
+            "name": "dataCenterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid id supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Found the datacenter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataCenterResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Datacenter not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Update a specific datacenter",
+        "operationId": "updateDataCenter",
+        "parameters": [
+          {
+            "name": "dataCenterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataCenterRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid id supplied or Invalid fields supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Updated the datacenter",
+            "content": {
+              "application/json": {
+
+              }
+            }
+          },
+          "404": {
+            "description": "DataCenter not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Delete a specific datacenter",
+        "operationId": "deleteDataCenter",
+        "parameters": [
+          {
+            "name": "dataCenterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid id supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Deleted the datacenter",
+            "content": {
+              "application/json": {
+
+              }
+            }
+          },
+          "404": {
+            "description": "Datacenter not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/servers": {
+      "get": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "summary": "Get all servers",
+        "operationId": "getAllServers",
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Found servers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "summary": "Add a new server",
+        "operationId": "addServer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid fields supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Server added",
+            "content": {
+              "application/json": {
+
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error - Insertion Failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/servers/upload": {
+      "post": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "operationId": "addServersFromFile",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/datacenters": {
+      "get": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Get details of all datacenter",
+        "operationId": "getAllDataCenters",
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Found the datacenters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataCenterResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Add a datacenter",
+        "operationId": "addDataCenter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataCenterRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid fields supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Found the datacenter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataCenterResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/datacenters/{dataCenterId}/servers": {
+      "patch": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Assign servers to a datacenter or update a datacenter's servers",
+        "operationId": "addOrUpdateServers",
+        "parameters": [
+          {
+            "name": "dataCenterId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataCenterServersAddOrUpdateRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid datacenter id supplied or Invalid serverIds supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Added/Updated the datacenter's servers",
+            "content": {
+              "application/json": {
+
+              }
+            }
+          },
+          "404": {
+            "description": "Datacenter not Found or Servers not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Datacenter server capacity surpassed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/servers/downloadAll": {
+      "get": {
+        "tags": [
+          "ServerOperations"
+        ],
+        "operationId": "downloadServers",
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/datacenters/summarized": {
+      "get": {
+        "tags": [
+          "DataCenterOperations"
+        ],
+        "summary": "Get country, maximum server capacity, and current server capacity of all datacenter",
+        "operationId": "getAllSummarized",
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Found the datacenters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataCenterSummarizedDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponseDto": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "path": {
+            "type": "string"
+          },
+          "errorName": {
+            "type": "string"
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "errorMessage": {
+            "type": "string"
+          }
+        }
+      },
+      "ServerUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "memory": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 10
+          },
+          "noOfCPU": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 9
+          },
+          "os": {
+            "type": "string",
+            "enum": [
+              "WINDOWS",
+              "LINUX",
+              "UNIX"
+            ]
+          }
+        }
+      },
+      "DataCenterRequestDto": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "minLength": 1
+          },
+          "address": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\s*[^,]+\\s*,\\s*[^,]+\\s*,\\s*[^,]+\\s*$"
+          },
+          "maxNoOfServers": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 100,
+            "minimum": 1
+          },
+          "currentNoOfServers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dataCenterType": {
+            "type": "string",
+            "enum": [
+              "ENTERPRISE",
+              "COLOCATION",
+              "CLOUD",
+              "EDGE",
+              "MANAGED_SERVICES",
+              "AI"
+            ]
+          }
+        },
+        "required": [
+          "address",
+          "country",
+          "dataCenterType"
+        ]
+      },
+      "ServerRequestDto": {
+        "type": "object",
+        "properties": {
+          "memory": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 10
+          },
+          "noOfCPU": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 9,
+            "minimum": 1
+          },
+          "os": {
+            "type": "string",
+            "enum": [
+              "WINDOWS",
+              "LINUX",
+              "UNIX"
+            ]
+          }
+        },
+        "required": [
+          "memory",
+          "noOfCPU",
+          "os"
+        ]
+      },
+      "DataCenterResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "country": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "maxNoOfServers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currentNoOfServers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serverIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "dataCenterType": {
+            "type": "string",
+            "enum": [
+              "ENTERPRISE",
+              "COLOCATION",
+              "CLOUD",
+              "EDGE",
+              "MANAGED_SERVICES",
+              "AI"
+            ]
+          }
+        }
+      },
+      "DataCenterServersAddOrUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "serverIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "maxItems": 2147483647,
+            "minItems": 1
+          }
+        },
+        "required": [
+          "serverIds"
+        ]
+      },
+      "ServerResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "datacenterId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memory": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "noOfCPU": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "os": {
+            "type": "string",
+            "enum": [
+              "WINDOWS",
+              "LINUX",
+              "UNIX"
+            ]
+          }
+        }
+      },
+      "DataCenterSummarizedDto": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "currentNoOfServers": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxNoOfServers": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    }
+  }
+}
